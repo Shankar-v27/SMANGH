@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Bus Booking Login</title>
+    <title>Professional Bus Booking Login</title>
     <style>
         * {
             margin: 0;
@@ -16,8 +16,8 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(#87CEEB, #E0FFFF);
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
         }
 
@@ -31,11 +31,11 @@
 
         .bus-container {
             position: relative;
-            width: 700px;
-            height: 280px;
-            background: linear-gradient(145deg, #FFD700, #FFD700);
+            width: 800px;
+            height: 300px;
+            background: linear-gradient(145deg, #fbbf24, #f59e0b);
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             transform-style: preserve-3d;
             transition: transform 2s;
             overflow: hidden;
@@ -46,7 +46,7 @@
             right: 0;
             height: 100%;
             width: 80px;
-            background: #FFD700;
+            background: #f59e0b;
             clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
         }
 
@@ -54,27 +54,8 @@
             position: absolute;
             width: 100%;
             height: 20px;
-            background: #FFD700;
+            background: #d97706;
             bottom: 60px;
-        }
-
-        .bus-container.moving {
-            animation: moveBus 2s forwards;
-        }
-
-        @keyframes moveBus {
-            0% {
-                transform: translateX(0) rotateY(0);
-            }
-            100% {
-                transform: translateX(150vw) rotateY(10deg);
-            }
-        }
-
-        .bus-body {
-            position: relative;
-            width: 100%;
-            height: 100%;
         }
 
         .windows-container {
@@ -85,7 +66,7 @@
             width: 580px;
             height: 80px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             gap: 25px;
         }
 
@@ -94,17 +75,30 @@
             height: 80px;
             background: linear-gradient(135deg, #e6f7ff, #b3e5fc);
             border-radius: 15px;
-            border: 4px solid #585e34;
+            border: 4px solid #d97706;
             position: relative;
             overflow: hidden;
         }
 
-        /* Add logo to the center window */
-        .window:nth-child(2) {
-            background-image: url('C:\Users\shank\OneDrive\Desktop\smang\SMANGH\tourism.jpg'); /* Replace with your logo file path */
-            background-size: contain; /* Ensures the logo fits well */
-            background-repeat: no-repeat;
-            background-position: center; /* Centers the logo */
+        .logo-container {
+            position: absolute;
+            /* Keep the original placement */
+            transform: translateX(-50%);/* Adjust size as needed */
+            height: 100px; /* Ensure height matches width */
+            border-radius: 75%; /* Make the logo circular */
+            overflow: hidden;
+            z-index: 25;
+            top: -200px; /* Move the logo above the bus */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;        }
+        
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .form-container {
@@ -115,15 +109,16 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            top: 120px;
+            top: 140px;
         }
 
         .login-form {
             width: 300px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px;
             border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .input-group {
@@ -133,15 +128,17 @@
         input {
             width: 100%;
             padding: 12px;
-            border: none;
+            border: 2px solid #d97706;
             border-radius: 25px;
-            background: rgba(255, 255, 255, 0.9);
+            background: white;
             outline: none;
             transition: all 0.3s ease;
+            font-size: 14px;
         }
 
         input:focus {
-            box-shadow: #FFD700
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
         }
 
         .wheel {
@@ -155,7 +152,7 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: transform 1s;
+            transition: transform 0.3s;
             border: 18px solid #333;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
@@ -172,7 +169,6 @@
         .wheel-text {
             color: white;
             font-weight: bold;
-            pointer-events: none;
             font-size: 0.9em;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
@@ -186,8 +182,8 @@
         }
 
         .wheel:hover {
-            background: #222;
             transform: scale(1.05);
+            background: #222;
         }
 
         .wheel.rotating {
@@ -195,12 +191,17 @@
         }
 
         @keyframes rotate-wheel {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .bus-container.moving {
+            animation: moveBus 2s forwards;
+        }
+
+        @keyframes moveBus {
+            0% { transform: translateX(0) rotateY(0); }
+            100% { transform: translateX(150vw) rotateY(10deg); }
         }
 
         .road {
@@ -208,7 +209,7 @@
             bottom: 0;
             width: 100%;
             height: 50px;
-            background: #333;
+            background: #1f2937;
             overflow: hidden;
         }
 
@@ -224,32 +225,32 @@
         }
 
         @keyframes moveRoad {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-50px);
-            }
+            from { transform: translateX(0); }
+            to { transform: translateX(-50px); }
         }
     </style>
 </head>
 <body>
     <div class="scene">
+        <!-- Logo container moved above the bus -->
+        <div class="logo-container">
+            <img src="C:\Users\shank\OneDrive\Desktop\smang\SMANGH\tourism.jpg" alt="Company Logo">
+        </div>
         <div class="bus-container" id="busContainer">
             <div class="bus-body">
                 <div class="bus-front"></div>
                 <div class="bus-stripe"></div>
                 <div class="windows-container">
                     <div class="window"></div>
-                    <div class="window"></div> <!-- Center window with logo -->
+                    <div class="window"></div>
                     <div class="window"></div>
                     <div class="window"></div>
                 </div>
-                
+
                 <div class="form-container">
                     <form class="login-form" id="loginForm">
                         <div class="input-group">
-                            <input type="email" placeholder="Email" required>
+                            <input type="email" placeholder="Email Address" required>
                         </div>
                         <div class="input-group">
                             <input type="password" placeholder="Password" required>
@@ -278,8 +279,17 @@
             
             setTimeout(() => {
                 wheels.forEach(wheel => wheel.classList.remove('rotating'));
-                alert(`${action.toUpperCase()} action triggered!`);
                 bus.classList.remove('moving');
+                if (action === 'login') {
+                    const form = document.getElementById('loginForm');
+                    if (form.checkValidity()) {
+                        alert('Logging in...');
+                    } else {
+                        alert('Please fill in all required fields');
+                    }
+                } else {
+                    alert('Redirecting to signup...');
+                }
             }, 2000);
         }
     </script>
