@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMANG - Book Your Bus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Previous styles remain same until form-group */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #080808, #040407);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #64b5f6;
+        }
+
+        .search-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            padding-right: 40px; /* Space for map icon */
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 2px #edeff1;
+        }
+
+        .map-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: transform 0.3s;
+            z-index: 1;
+        }
+
+        .map-icon:hover {
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .map-container {
+            display: none;
+            height: 200px;
+            margin-top: 0.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: #64b5f6;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #1e88e5;
+            transform: translateY(-2px);
+        }
+
+        /* Rest of the styles remain same */
+        .bus-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 0 auto;
+            max-width: 1000px;
+            perspective: 1000px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+            opacity: 1;
+            transform: translateZ(0);
+        }
+
+        .card.hidden {
+            display: none;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .slide-out {
+            animation: slideOut 0.5s forwards;
+        }
+
+        .slide-in {
+            animation: slideIn 0.5s forwards;
+        }
+
+        @keyframes slideOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(-100%);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+    </style>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">SMANG</a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <form class="search-form">
+            <h1 class="form-title">Book Your Bus</h1>
+            <div class="form-group">
+                <label for="source">From</label>
+                <input type="text" id="source" placeholder="Enter source location">
+                <div class="map-icon" data-map="source-map">📍</div>
+                <div id="source-map" class="map-container"></div>
+            </div>
+            <div class="form-group">
+                <label for="destination">To</label>
+                <input type="text" id="destination" placeholder="Enter destination">
+                <div class="map-icon" data-map="destination-map">📍</div>
+                <div id="destination-map" class="map-container"></div>
+            </div>
+            <div class="form-group">
+                <label for="bus-type">Bus Type</label>
+                <select id="bus-type">
+                    <option value="">Select bus type</option>
+                    <option value="ac">AC Bus</option>
+                    <option value="non-ac">Non-AC Bus</option>
+                    <option value="sleeper">Sleeper Bus</option>
+                    <option value="luxury">Luxury Bus</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Travel Date</label>
+                <input type="date" id="date">
+            </div>
+            <button type="button" class="search-btn" onclick="redirectToNextPage()">Search Buses</button>
+
+
+        <div class="bus-cards">
+            <div class="card">
+                <img src="/api/placeholder/400/200" alt="Luxury Bus">
+                <h3>Luxury AC Bus</h3>
+                <p>Travel in ultimate comfort with our premium AC buses featuring reclining seats and entertainment system.</p>
+            </div>
+            <div class="card">
+                <img src="/api/placeholder/400/200" alt="Sleeper Bus">
+                <h3>Sleeper Bus</h3>
+                <p>Perfect for overnight journeys with comfortable sleeping berths and personal reading lights.</p>
+            </div>
+            <div class="card">
+                <img src="/api/placeholder/400/200" alt="Party Bus">
+                <h3>Party Bus</h3>
+                <p>Make your journey memorable with our party buses featuring LED lights and sound system.</p>
+            </div>
+            <div class="card hidden">
+                <img src="/api/placeholder/400/200" alt="Standard AC Bus">
+                <h3>Standard AC Bus</h3>
+                <p>Comfortable travel with air conditioning and cushioned seats at affordable prices.</p>
+            </div>
+            <div class="card hidden">
+                <img src="/api/placeholder/400/200" alt="Express Bus">
+                <h3>Express Bus</h3>
+                <p>Quick and efficient travel with limited stops and experienced drivers.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize maps
+        function initMap(mapContainerId, initialCoordinates) {
+            const map = L.map(mapContainerId).setView(initialCoordinates, 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            return map;
+        }
+
+        // Geocode location function
+        function geocodeLocation(query, map, marker) {
+            const geocodeUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${query}`;
+            fetch(geocodeUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data[0]) {
+                        const lat = parseFloat(data[0].lat);
+                        const lon = parseFloat(data[0].lon);
+                        map.setView([lat, lon], 13);
+                        if (marker) {
+                            marker.setLatLng([lat, lon]);
+                        } else {
+                            marker = L.marker([lat, lon]).addTo(map);
+                        }
+                    }
+                })
+                .catch(error => console.error("Error fetching geocode data:", error));
+        }
+        function redirectToNextPage() {
+        // Redirect the user to the next page (e.g., search-results.html)
+        window.location.href = 'search-results.html';
+    }
+
+        // Card shuffling function
+        function shuffleCards() {
+    const container = document.querySelector('.bus-cards');
+    const cards = Array.from(container.children);
+    let visibleCards = cards.slice(0, 3);
+    let hiddenCards = cards.slice(3);
+
+    setInterval(() => {
+        const cardToHide = visibleCards[0];
+        cardToHide.classList.add('slide-out');
+
+        setTimeout(() => {
+            const newCard = hiddenCards[0];
+            newCard.classList.remove('hidden');
+            newCard.classList.add('slide-in');
+            
+            // Update arrays immediately
+            hiddenCards.push(cardToHide);
+            hiddenCards.shift();
+            visibleCards.shift();
+            visibleCards.push(newCard);
+
+            // Hide the card after animation completes
+            setTimeout(() => {
+                cardToHide.classList.add('hidden');
+                cardToHide.classList.remove('slide-out');
+            }, 500);
+
+            // Remove the slide-in class after animation
+            setTimeout(() => {
+                newCard.classList.remove('slide-in');
+            }, 500);
+        }, 700); // Increased delay to ensure smooth transition
+    }, 5000);
+}
+
+        // Initialize everything when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize maps
+            const sourceMap = initMap('source-map', [51.505, -0.09]);
+            const destinationMap = initMap('destination-map', [51.505, -0.09]);
+
+            let sourceMarker = null;
+            let destinationMarker = null;
+
+            // Handle map icon clicks
+            document.querySelectorAll('.map-icon').forEach(icon => {
+                icon.addEventListener('click', (e) => {
+                    const mapId = e.target.getAttribute('data-map');
+                    const mapContainer = document.getElementById(mapId);
+                    mapContainer.style.display = mapContainer.style.display === 'none' ? 'block' : 'none';
+                    // Trigger a resize event on the map to ensure it renders correctly
+                    setTimeout(() => {
+                        if (mapId === 'source-map') sourceMap.invalidateSize();
+                        else destinationMap.invalidateSize();
+                    }, 100);
+                });
+            });
+
+            // Handle location input
+            document.getElementById('source').addEventListener('blur', () => {
+                const sourcePlace = document.getElementById('source').value;
+                if (sourcePlace) geocodeLocation(sourcePlace, sourceMap, sourceMarker);
+            });
+
+            document.getElementById('destination').addEventListener('blur', () => {
+                const destinationPlace = document.getElementById('destination').value;
+                if (destinationPlace) geocodeLocation(destinationPlace, destinationMap, destinationMarker);
+            });
+
+            // Start card shuffling
+            shuffleCards();
+        });
+    </script>
+    <script>
+        function redirectToNextPage() {
+            // Redirect to search results page
+            window.location.href = 'integrted.html';
+        }
+    </script>
+</body>
+</html>
