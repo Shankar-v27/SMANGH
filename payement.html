@@ -6,6 +6,54 @@
     <title>Bus Booking Payment</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* Navigation styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #000801;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-links a.profile {
+            border: 2px solid #FFD700;
+            padding: 0.5rem 1.5rem;
+        }
+
+        .nav-links a.profile:hover {
+            background: #FFD700;
+            color: #000801;
+        }
+
+        /* Your existing styles */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -13,6 +61,7 @@
             background-image: url('smang bg.jpg');
             color: #FFD700;
         }
+        /* [Rest of your existing styles remain unchanged] */
         .container {
             max-width: 800px;
             margin: 50px auto;
@@ -107,19 +156,37 @@
             font-weight: bold;
             color: #FFD700;
         }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="#" class="logo">SMANG</a>
+        <div class="nav-links">
+            <a href="SMANG2.html">Home</a>
+            <a href="aboutus.html">About</a>
+            <a href="#">Services</a>
+            <a href="contactus.html">Contact</a>
+            <a href="payment.html" class="profile">Profile</a>
+        </div>
+    </nav>
+
     <div class="container">
+        <!-- [Rest of your existing HTML content remains unchanged] -->
         <div class="header">
             <h1>Bus Booking Payment</h1>
         </div>
 
         <div class="section payment-summary">
             <h2>Payment Summary</h2>
-            <p>Base Fare: <span id="base-fare">$0.00</span></p>
-            <p>Taxes (GST): <span id="gst">$0.00</span></p>
-            <p>Total Amount: <span id="total-amount">$0.00</span></p>
+            <p>Base Fare: <span id="base-fare">₹0.00</span></p>
+            <p>Taxes (GST): <span id="gst">₹0.00</span></p>
+            <p>Total Amount: <span id="total-amount">₹0.00</span></p>
         </div>
 
         <div class="section choose-payment">
@@ -163,8 +230,9 @@
         const totalAmount = (baseFare + parseFloat(gst)).toFixed(2);
 
         document.getElementById('base-fare').textContent = `$${baseFare.toFixed(2)}`;
-        document.getElementById('gst').textContent = `$${gst}`;
-        document.getElementById('total-amount').textContent = `$${totalAmount}`;
+        document.getElementById('gst').textContent = `${gst}`;
+        document.getElementById('total-amount').textContent = `${totalAmount}`;
+        
     </script>
 </body>
 </html>
