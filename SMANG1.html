@@ -13,165 +13,175 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="ai.css" />
     <style>
-        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+            background-image: url("smang bg.jpg");
+            overflow-x: hidden;
+        
+            font-family: Arial, sans-serif;
+            background-image: url('eugene-prunk-rREKGlQHeYk-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow-x: hidden;
         }
-
+        
         .explore-btn {
-    background: linear-gradient(45deg, #FFD700, #FFA500);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 25px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.explore-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.explore-btn:active {
-    transform: translateY(1px);
-}
-
-        /* Header */
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000801;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .explore-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .explore-btn:active {
+            transform: translateY(1px);
+        }
         header {
-            background: #0c0c0ccc;
-            color: rgb(4, 4, 4);
-            padding: 10px 20px;
+            text-align: center;
+            padding: 20px;
+            background: #000801;
+            color: #FFD700;
+            font-size: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
         header .logo {
             display: flex;
             align-items: center;
         }
-
+        
         header .logo img {
             width: 100px;
             margin-right: 10px;
             border-radius: 50%;
         }
-
+        
         header nav {
             display: flex;
             gap: 15px;
         }
-
+        
         header nav a {
-            color: white;
+            color: #FFD700;
             text-decoration: none;
             padding: 5px 10px;
             border-radius: 5px;
             transition: background 0.3s;
         }
-
+        
         header nav a:hover {
-            background: #005f82;
+            background: #FFD700;
+            color: #000801;
         }
-
+        
         header nav .login-register {
-            background: #ffffff;
-            color: #008cba;
+            background: #FFD700;
+            color: #000801;
             padding: 5px 15px;
             border-radius: 5px;
             text-decoration: none;
-            border: 1px solid #008cba;
+            border: 1px solid #FFD700;
             transition: background 0.3s, color 0.3s;
         }
-
+        
         header nav .login-register:hover {
-            background: #008cba;
-            color: #ffffff;
+            background: #000801;
+            color: #FFD700;
         }
-
-        /* Hero Section */
+        
         .hero {
-            background: url('eugene-prunk-rREKGlQHeYk-unsplash.jpg') no-repeat center/cover;
-            color: rgb(9, 9, 9);
             text-align: center;
             padding: 100px 20px;
+            color: #FFD700;
+            animation: slideIn 0.6s ease-in-out;
         }
-
+        
         .hero h1 {
             font-size: 3rem;
         }
-
+        
         .hero p {
             font-size: 1.2rem;
             margin: 20px 0;
         }
-
+        
         .hero button {
-            background: white;
+            background: #FFD700;
+            color: #000801;
             border: none;
-            padding: 10px 20px;
-            color: #FFD700;
-            font-size: 1rem;
-            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
             cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
         .hero button:hover {
-            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
         }
-
-        /* Features Section */
+        
         .features {
             padding: 50px 20px;
             text-align: center;
         }
-
+        
         .features h2 {
             font-size: 2rem;
             margin-bottom: 20px;
+            color: #FFD700;
         }
-
+        
         .features .feature-list {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             justify-content: center;
         }
-
+        
         .features .feature {
-            flex: 1 1 calc(33% - 40px);
-            background: #f0f0f0;
+            background: #000801;
+            border: 1px solid #FFD700;
+            border-radius: 15px;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            color: #FFD700;
         }
-
-        /* Challenge Form */
+        
+        .features .feature:hover {
+            transform: translateY(-10px);
+        }
+        
         .challenge-form {
-            background: #e6f7ff;
+            background: #000801;
             padding: 50px 20px;
             text-align: center;
+            color: #FFD700;
         }
-
-        .challenge-form h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
+        
         .challenge-form form {
             display: flex;
             flex-direction: column;
@@ -179,35 +189,38 @@
             max-width: 500px;
             margin: 0 auto;
         }
-
+        
         .challenge-form form input,
-        .challenge-form form textarea,
-        .challenge-form form button {
+        .challenge-form form textarea {
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #FFD700;
+            background: #000801;
+            color: #FFD700;
         }
-
+        
         .challenge-form form button {
             background: #FFD700;
-            color: white;
+            color: #000801;
             border: none;
+            padding: 10px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
-
+        
         .challenge-form form button:hover {
-            background:#FFD700;
+            transform: translateY(-3px);
         }
-
-        /* Footer */
+        
         footer {
-            background: #FFD700;
-            color: white;
+            background: #000801;
+            color: #FFD700;
             text-align: center;
             padding: 20px;
+            border-top: 1px solid #FFD700;
         }
-
-        /* Floating Buttons */
+        
         .floating-buttons {
             position: fixed;
             bottom: 20px;
@@ -216,73 +229,54 @@
             gap: 10px;
             padding: 10px;
         }
-
-        .floating-buttons.left {
-            left: 20px;
-        }
-
-        .floating-buttons.right {
-            right: 20px;
-        }
-
+        
         .float-btn {
             width: 60px;
             height: 60px;
             border-radius: 50%;
             background: #FFD700;
-            color: white;
+            color: #000801;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
             transition: all 0.3s ease;
         }
-
+        
         .float-btn:hover {
             transform: scale(1.1);
-            background: #FFD700;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
         }
-
-        .float-btn span {
-            font-size: 28px;
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
-
-        /* Responsive Design */
+        
         @media (max-width: 768px) {
             .features .feature {
-                flex: 1 1 calc(100% - 40px);
+                margin: 10px;
             }
-
+            
             .hero h1 {
                 font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
             }
             
             .floating-buttons {
                 bottom: 10px;
             }
             
-            .floating-buttons.left {
-                left: 10px;
-            }
-            
-            .floating-buttons.right {
-                right: 10px;
-            }
-            
             .float-btn {
                 width: 50px;
                 height: 50px;
-            }
-            
-            .float-btn span {
-                font-size: 24px;
             }
         }
     </style>
@@ -295,10 +289,10 @@
             <h1>SMANG TOURISM</h1>
         </div>
         <nav>
-            <a href="#">Home</a>
-            <a href="http://127.0.0.1:5500/aboutus.html">About Us</a>
-            <a href="#">Services</a>
-            <a href="http://127.0.0.1:5500/contactus.html">Contact</a>
+            <a href="SMANG1.html">Home</a>
+            <a href="login.html">About Us</a>
+            <a href="login.html">Services</a>
+            <a href="login.html">Contact</a>
             <a href="login.html" class="login-register">Login/Register</a>
         </nav>
     </header>

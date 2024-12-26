@@ -7,78 +7,113 @@
   <style>
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
+          transform: translateY(0);
       }
       40% {
-        transform: translateY(-20px);
+          transform: translateY(-20px);
       }
       60% {
-        transform: translateY(-10px);
+          transform: translateY(-10px);
       }
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+  }
+  
+  * {
       margin: 0;
       padding: 0;
-      color: #333;
-      background-color: #f9f9f9;
-    }
-
-    .container {
+      box-sizing: border-box;
+  }
+  
+  body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-image: url('smang bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow-x: hidden;
+      color: #FFD700;
+  }
+  
+  .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
-    }
-
-    .header {
+  }
+  
+  .header {
       text-align: center;
+      background: #000801;
+      padding: 20px;
       margin-bottom: 20px;
-    }
-
-    .header h1 {
+  }
+  
+  .header h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
-    }
-
-    .logo {
+      color: #FFD700;
+  }
+  
+  .logo {
       width: 150px;
       margin: 0 auto 20px;
       animation: bounce 2s infinite;
-    }
-
-    .section {
+  }
+  
+  .section {
       margin-bottom: 30px;
-    }
-
-    .section h2 {
+      background: rgba(0, 8, 1, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid #FFD700;
+  }
+  
+  .section h2 {
       font-size: 1.8rem;
       margin-bottom: 10px;
-      color: #0056b3;
-    }
-
-    .section ul {
+      color: #FFD700;
+  }
+  
+  .section ul {
       list-style-type: disc;
       margin-left: 20px;
-    }
-
-    .highlight {
-      color: #0056b3;
+  }
+  
+  .highlight {
+      color: #FFA500;
       font-weight: bold;
-    }
-
-    .footer {
+  }
+  
+  .footer {
       text-align: center;
       margin-top: 30px;
       font-size: 1.1rem;
+      background: #000801;
+      padding: 20px;
+      border-top: 1px solid #FFD700;
+  }
+  
+  /* Rest of the previous styles remain the same */
+
+  
+  @media (max-width: 768px) {
+      .container {
+          padding: 10px;
+      }
+      
+      .header h1 {
+          font-size: 2rem;
+      }
+      
+      .section {
+          margin-bottom: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <img src="tourism.jp" alt="Smang Logo" class="logo">
+      <img src="C:\Users\shank\OneDrive\Desktop\smang\SMANGH\tourism.jpg" alt="Smang Logo" class="logo">
       <h1>About Smang</h1>
       <p>Welcome to <span class="highlight">Smang</span>, your one-stop solution for seamless and reliable bus rental services!</p>
     </div>
