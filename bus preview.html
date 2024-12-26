@@ -20,6 +20,139 @@
             font-size: 24px;
         }
 
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #000801;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-links a.profile {
+            border: 2px solid #FFD700;
+            padding: 0.5rem 1.5rem;
+        }
+
+        .nav-links a.profile:hover {
+            background: #FFD700;
+            color: #000801;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .search-form {
+            background: #000801;
+            border: 1px solid #FFD700;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 2rem auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            color: #FFD700;
+            animation: slideIn 0.6s ease-in-out;
+        }
+
+        .form-title {
+            text-align: center;
+            color: #FFD700;
+            font-size: 24px;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            background: #000801;
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            border-radius: 8px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #fff;
+        }
+
+        .map-icon {
+            position: absolute;
+            right: 10px;
+            top: 65%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #FFD700;
+        }
+
+        .map-container {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s;
+            border-radius: 8px;
+            border: 1px solid #FFD700;
+        }
+
+        .map-container.active {
+            height: 200px;
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #FFD700;
+            color: #000801;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #fff;
+        }
+
         .bus-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -110,9 +243,56 @@
                 opacity: 1;
             }
         }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .search-form {
+                margin: 1rem;
+            }
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #FFD700;
+            border-top: 5px solid #000801;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="#" class="logo">SMANG</a>
+        <div class="nav-links">
+            <a href="SMANG2.html">Home</a>
+            <a href="aboutus.html">About</a>
+            <a href="#">Services</a>
+            <a href="contactus.html">Contact</a>
+            <a href="profilepage.html" class="profile">Profile</a>
+        </div>
+    </nav>
     <header>Bus Preview</header>
     <div class="bus-container" id="busContainer"></div>
     
@@ -147,7 +327,6 @@
             const busCard = document.createElement('div');
             busCard.className = 'bus-card';
             busCard.onclick = () => window.location.href = 'C:/Users/shank/OneDrive/Desktop/smang/SMANGH/payement.html';
-
 
             busCard.innerHTML = `
                 <img src="${bus.image}" alt="${bus.title}" class="bus-image">

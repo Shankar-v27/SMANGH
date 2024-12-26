@@ -5,6 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile Page</title>
   <style>
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #000801;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #FFD700;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .nav-links a.profile {
+      border: 2px solid #FFD700;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .nav-links a.profile:hover {
+      background: #FFD700;
+      color: #000801;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -16,7 +62,7 @@
 
     .container {
       max-width: 600px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
       background: #000801;
       border-radius: 8px;
@@ -114,9 +160,26 @@
     .logout button:hover {
       background-color: #a71d2a;
     }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#" class="logo">SMANG</a>
+    <div class="nav-links">
+      <a href="SMANG2.html">Home</a>
+      <a href="aboutus.html">About</a>
+      <a href="#">Services</a>
+      <a href="contactus.html">Contact</a>
+      <a href="profilepage.html" class="profile">Profile</a>
+    </div>
+  </nav>
+
   <div class="container">
     <header class="profile-header">
       <img src="tourism.jpg" alt="Profile Picture" class="profile-pic">
