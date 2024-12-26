@@ -10,15 +10,15 @@
       line-height: 1.6;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      background-image: url("smang bg.jpg");
+      color: #FFD700;
     }
 
     .container {
       max-width: 600px;
       margin: 50px auto;
       padding: 20px;
-      background: #fff;
+      background: #000801;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -31,7 +31,11 @@
     .header h1 {
       font-size: 2rem;
       margin-bottom: 10px;
-      color: #0056b3;
+      color: #FFD700;
+    }
+
+    .header p {
+      color: #FFD700;
     }
 
     .form-group {
@@ -42,15 +46,18 @@
       display: block;
       font-weight: bold;
       margin-bottom: 5px;
+      color: #FFD700;
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ddd;
+      background: #1a1a1a;
+      border: 1px solid #FFD700;
       border-radius: 4px;
       font-size: 1rem;
+      color: #FFD700;
     }
 
     .form-group textarea {
@@ -62,9 +69,10 @@
       display: block;
       width: 100%;
       padding: 10px;
-      background-color: #0056b3;
-      color: #fff;
+      background-color: #FFD700;
+      color: #000801;
       font-size: 1.2rem;
+      font-weight: bold;
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -72,7 +80,7 @@
     }
 
     .button:hover {
-      background-color: #003f88;
+      background-color: #b39700;
     }
 
     .message {
@@ -84,6 +92,11 @@
 
     .error {
       color: #dc3545;
+    }
+
+    ::placeholder {
+      color: #FFD700;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -126,7 +139,6 @@
         return;
       }
 
-      // Simulate sending the message
       setTimeout(() => {
         responseMessage.textContent = 'Thank you for your message! We will get back to you shortly.';
         responseMessage.className = 'message';
