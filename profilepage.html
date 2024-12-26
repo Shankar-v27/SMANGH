@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header Section */
+    .profile-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .profile-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .profile-email {
+      font-size: 16px;
+      color: #777;
+      margin: 5px 0 0;
+    }
+
+    /* Profile Section */
+    .profile-section {
+      margin-bottom: 20px;
+    }
+
+    .profile-section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #booking-history li {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .logout {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .logout button {
+      background-color: #dc3545;
+    }
+
+    .logout button:hover {
+      background-color: #a71d2a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header class="profile-header">
+      <img src="tourism.jpg" alt="Profile Picture" class="profile-pic">
+      <h1 class="profile-name">Tamil</h1>
+      <p class="profile-email">tamilselvanp0507</p>
+    </header>
+
+    <!-- Personal Information Section -->
+    <section class="profile-section">
+      <h2>Personal Information</h2>
+      <form id="profile-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" value="Tamil">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" value="tamilselvanp0507@gmail.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" value="+91 88383 58477">
+        </div>
+        <button type="button" id="save-button">Save Changes</button>
+      </form>
+    </section>
+
+    <!-- Booking History Section -->
+    <section class="profile-section">
+      <h2>Booking History</h2>
+      <ul id="booking-history">
+        <li>
+          <strong>Trip to Hyderabad</strong>
+          <p>Date: 2024-12-01</p>
+          <p>Bus: PSK Travels</p>
+        </li>
+        <li>
+          <strong>Trip to Tanjore</strong>
+          <p>Date: 2024-11-15</p>
+          <p>Bus: KPN Travels </p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Logout Section -->
+    <div class="logout">
+      <button id="logout-button">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    // Save Changes Event
+    document.getElementById('save-button').addEventListener('click', () => {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      alert(`Profile Updated:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`);
+    });
+
+    // Logout Event
+    document.getElementById('logout-button').addEventListener('click', () => {
+      alert('You have been logged out.');
+      // Redirect to login page (example)
+      window.location.href = '/login.html';
+    });
+  </script>
+</body>
+</html>
