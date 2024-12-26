@@ -194,36 +194,36 @@
             <div class="payment-methods">
                 <div class="payment-method">
                     <span>Google Pay</span>
-                    <img src="/api/placeholder/30/30" alt="Google Pay">
+                    <img src="gpay." alt="Google Pay">
                 </div>
                 <div class="payment-method">
                     <span>PhonePe</span>
-                    <img src="/api/placeholder/30/30" alt="PhonePe">
+                    <img src="phonepay.jpg" alt="PhonePe">
                 </div>
                 <div class="payment-method">
                     <span>Mobile Banking</span>
-                    <img src="/api/placeholder/30/30" alt="Mobile Banking">
+                    <img src="mobilebanking.jpg" alt="Mobile Banking">
                 </div>
                 <div class="payment-method">
                     <span>PayPal</span>
-                    <img src="/api/placeholder/30/30" alt="PayPal">
+                    <img src="paypal.jpg" alt="PayPal">
                 </div>
             </div>
         </div>
 
         <div class="section agent">
-            <h2>Agent's Name</h2>
-            <p>John Doe (Agent ID: 12345)</p>
+            <h2>Travel Agencie's Name</h2>
+            <p>John Doe (Agencie ID: 12345)</p>
         </div>
 
         <div class="section review">
             <h2>Customer Review</h2>
             <textarea rows="4" placeholder="Leave a review about your booking experience..."></textarea>
         </div>
-
-        <button class="button">Make Payment</button>
-    </div>
-
+        <form action="bookingcon.html" method="GET">
+            <button class="button">Make Payment</button>
+        </form>
+        
     <script>
         const baseFare = 50000.00;
         const gst = (baseFare * 0.05).toFixed(2);
