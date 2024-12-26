@@ -1,0 +1,101 @@
+import React from 'react';
+import { Bus } from 'lucide-react';
+
+const AboutUsPage = () => {
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-12">
+      {/* Header Section */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-6">About Smang</h1>
+        <div className="flex justify-center mb-6">
+          <Bus size={48} className="text-blue-600" />
+        </div>
+      </div>
+
+      {/* Welcome Section */}
+      <div className="mb-12">
+        <p className="text-lg mb-6">
+          Welcome to Smang, your one-stop solution for seamless and reliable bus rental services! Whether you're planning a group outing, corporate event, or a family trip, Smang makes bus booking effortless and hassle-free.
+        </p>
+        <p className="text-lg mb-6">
+          Our platform connects users with a wide range of buses tailored to meet your needs, from luxury coaches to budget-friendly options. With Smang, you can:
+        </p>
+        <ul className="list-disc pl-6 mb-6 space-y-2">
+          <li className="text-lg">Rent buses conveniently for personal or professional purposes.</li>
+          <li className="text-lg">Book tourist buses for exciting group adventures.</li>
+        </ul>
+      </div>
+
+      {/* Mission & Vision Section */}
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="bg-blue-50 p-6 rounded-lg">
+          <h2 className="text-2xl font-bold mb-4 text-blue-800">Our Mission</h2>
+          <p className="text-gray-700">
+            To revolutionize the transportation rental industry by offering a user-friendly, efficient, and transparent platform that makes travel planning stress-free and accessible to all.
+          </p>
+        </div>
+        <div className="bg-blue-50 p-6 rounded-lg">
+          <h2 className="text-2xl font-bold mb-4 text-blue-800">Our Vision</h2>
+          <p className="text-gray-700">
+            To become the most trusted and widely-used app for bus rentals and group travel across regions, providing unparalleled convenience and value.
+          </p>
+        </div>
+      </div>
+
+      {/* Why Choose Us Section */}
+      <div className="mb-12">
+        <h2 className="text-3xl font-bold mb-6">Why Choose Smang?</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex items-start space-x-4">
+            <div className="bg-blue-100 p-2 rounded-full">
+              <Bus size={24} className="text-blue-600" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-xl mb-2">Ease of Use</h3>
+              <p>Intuitive design for quick and easy bookings.</p>
+            </div>
+          </div>
+          <div className="flex items-start space-x-4">
+            <div className="bg-blue-100 p-2 rounded-full">
+              <Bus size={24} className="text-blue-600" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-xl mb-2">Wide Options</h3>
+              <p>Access to a variety of buses for different group sizes and budgets.</p>
+            </div>
+          </div>
+          <div className="flex items-start space-x-4">
+            <div className="bg-blue-100 p-2 rounded-full">
+              <Bus size={24} className="text-blue-600" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-xl mb-2">Reliability</h3>
+              <p>Verified operators ensuring safety and punctuality.</p>
+            </div>
+          </div>
+          <div className="flex items-start space-x-4">
+            <div className="bg-blue-100 p-2 rounded-full">
+              <Bus size={24} className="text-blue-600" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-xl mb-2">Customer-Centric</h3>
+              <p>Dedicated to delivering the best user experience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Closing Section */}
+      <div className="text-center">
+        <p className="text-lg mb-4">
+          At Smang, we believe in simplifying group travel and making it enjoyable for everyone. Whether you're exploring new places or organizing local transport, Smang is here to drive your journey forward.
+        </p>
+        <p className="text-xl font-semibold text-blue-600">
+          Let's make travel better together! 🚍
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default AboutUsPage;
