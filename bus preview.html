@@ -299,21 +299,21 @@
     <script>
         const buses = [
             {
-                image: "C:\\Users\\shank\\OneDrive\\Desktop\\smang\\SMANGH\\slide1.jpg",
+                image: "slide1.jpg",
                 title: "Luxury Sleeper Bus",
                 agency: "Dream Travels",
                 review: "4.5 stars (234 reviews)",
                 price: "Rs.75000"
             },
             {
-                image: "C:\\Users\\shank\\OneDrive\\Desktop\\smang\\SMANGH\\slide 2.jpg",
+                image: "slide 2.jpg",
                 title: "Economy Express",
                 agency: "GoBudget Agency",
                 review: "4.2 stars (132 reviews)",
                 price: "Rs.85000"
             },
             {
-                image: "C:\\Users\\shank\\OneDrive\\Desktop\\smang\\SMANGH\\slide3.jpg",
+                image: "slide3.jpg",
                 title: "Family Comfort Bus",
                 agency: "Comfort Journey",
                 review: "4.8 stars (410 reviews)",
@@ -326,7 +326,7 @@
         buses.forEach(bus => {
             const busCard = document.createElement('div');
             busCard.className = 'bus-card';
-            busCard.onclick = () => window.location.href = 'C:/Users/shank/OneDrive/Desktop/smang/SMANGH/payement.html';
+            busCard.onclick = () => window.location.href = 'payement.html';
 
             busCard.innerHTML = `
                 <img src="${bus.image}" alt="${bus.title}" class="bus-image">
