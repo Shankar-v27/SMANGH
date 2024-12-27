@@ -194,7 +194,7 @@
             <div class="payment-methods">
                 <div class="payment-method">
                     <span>Google Pay</span>
-                    <img src="gpay." alt="Google Pay">
+                    <img src="gpay.jpg" alt="Google Pay">
                 </div>
                 <div class="payment-method">
                     <span>PhonePe</span>
@@ -229,7 +229,7 @@
         const gst = (baseFare * 0.05).toFixed(2);
         const totalAmount = (baseFare + parseFloat(gst)).toFixed(2);
 
-        document.getElementById('base-fare').textContent = `$${baseFare.toFixed(2)}`;
+        document.getElementById('base-fare').textContent = `${baseFare.toFixed(2)}`;
         document.getElementById('gst').textContent = `${gst}`;
         document.getElementById('total-amount').textContent = `${totalAmount}`;
         
